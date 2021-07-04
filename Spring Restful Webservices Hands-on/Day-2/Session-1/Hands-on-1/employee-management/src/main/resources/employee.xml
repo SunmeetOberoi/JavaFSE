@@ -1,0 +1,135 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<beans xmlns="http://www.springframework.org/schema/beans"
+	xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance"
+	xsi:schemaLocation="http://www.springframework.org/schema/beans
+        https://www.springframework.org/schema/beans/spring-beans.xsd">
+
+	<!-- Util -->
+	<bean id="dateFormat" class="java.text.SimpleDateFormat">
+		<constructor-arg value="dd/MM/yyyy" />
+	</bean>
+
+	<!-- Departments -->
+	<bean id="payroll"
+		class="com.cognizant.employeemanagement.model.Department">
+		<property name="id" value="1" />
+		<property name="name" value="Payroll" />
+	</bean>
+	<bean id="hr"
+		class="com.cognizant.employeemanagement.model.Department">
+		<property name="id" value="2" />
+		<property name="name" value="HR" />
+	</bean>
+	<bean id="internal"
+		class="com.cognizant.employeemanagement.model.Department">
+		<property name="id" value="3" />
+		<property name="name" value="Internal" />
+	</bean>
+
+	<!-- Skills -->
+	<bean id="html"
+		class="com.cognizant.employeemanagement.model.Skill">
+		<property name="id" value="1" />
+		<property name="name" value="HTML" />
+	</bean>
+	<bean id="css"
+		class="com.cognizant.employeemanagement.model.Skill">
+		<property name="id" value="2" />
+		<property name="name" value="CSS" />
+	</bean>
+	<bean id="js" class="com.cognizant.employeemanagement.model.Skill">
+		<property name="id" value="3" />
+		<property name="name" value="JavaScript" />
+	</bean>
+
+	<!-- Employees -->
+	<bean id="emp1"
+		class="com.cognizant.employeemanagement.model.Employee">
+		<property name="id" value="1" />
+		<property name="name" value="Ram" />
+		<property name="salary" value="100000" />
+		<property name="permanent" value="true" />
+		<property name="dateofBirth">
+			<bean factory-bean="dateFormat" factory-method="parse">
+				<constructor-arg value="31/01/1995" />
+			</bean>
+		</property>
+		<property name="Department" ref="hr" />
+		<property name="skillList">
+			<list>
+				<ref bean="html" />
+				<ref bean="css" />
+			</list>
+		</property>
+	</bean>
+	<bean id="emp2"
+		class="com.cognizant.employeemanagement.model.Employee">
+		<property name="id" value="2" />
+		<property name="name" value="Ramesh" />
+		<property name="salary" value="150000" />
+		<property name="permanent" value="true" />
+		<property name="dateofBirth">
+			<bean factory-bean="dateFormat" factory-method="parse">
+				<constructor-arg value="05/02/1990" />
+			</bean>
+		</property>
+		<property name="Department" ref="payroll" />
+		<property name="skillList">
+			<list>
+				<ref bean="html" />
+				<ref bean="css" />
+				<ref bean="js" />
+			</list>
+		</property>
+	</bean>
+	<bean id="emp3"
+		class="com.cognizant.employeemanagement.model.Employee">
+		<property name="id" value="3" />
+		<property name="name" value="Sam" />
+		<property name="salary" value="10000" />
+		<property name="permanent" value="false" />
+		<property name="dateofBirth">
+			<bean factory-bean="dateFormat" factory-method="parse">
+				<constructor-arg value="20/05/2000" />
+			</bean>
+		</property>
+		<property name="Department" ref="hr" />
+		<property name="skillList">
+			<list>
+				<ref bean="html" />
+			</list>
+		</property>
+	</bean>
+	<bean id="emp4"
+		class="com.cognizant.employeemanagement.model.Employee">
+		<property name="id" value="4" />
+		<property name="name" value="Nile" />
+		<property name="salary" value="20000" />
+		<property name="permanent" value="false" />
+		<property name="dateofBirth">
+			<bean factory-bean="dateFormat" factory-method="parse">
+				<constructor-arg value="21/06/2000" />
+			</bean>
+		</property>
+		<property name="Department" ref="internal" />
+		<property name="skillList">
+			<list>
+				<ref bean="html" />
+				<ref bean="css" />
+				<ref bean="js" />
+			</list>
+		</property>
+	</bean>
+
+	<bean id="employeeList" class="java.util.ArrayList">
+		<constructor-arg>
+			<list>
+				<ref bean="emp1" />
+				<ref bean="emp2" />
+				<ref bean="emp3" />
+				<ref bean="emp4" />
+			</list>
+		</constructor-arg>
+	</bean>
+
+</beans>

@@ -1,0 +1,1 @@
+# Spring Core – Load list of countries from Spring Configuration XML

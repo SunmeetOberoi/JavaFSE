@@ -1,0 +1,1 @@
+# Include global exception handler for validation errors

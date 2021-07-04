@@ -1,0 +1,1 @@
+# Create authentication controller and configure it in SecurityConfig

@@ -1,0 +1,1 @@
+# Read Authorization header and decode the username and password
